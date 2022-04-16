@@ -7,6 +7,7 @@ namespace LernProject
 {
     public class BulletJHON : MonoBehaviour
     {
+        [SerializeField] private ParticleSystem _sparcsPrefab;
         private Transform _target;
         private float _speed;
         [SerializeField] private float _damage = 3;
@@ -40,6 +41,14 @@ namespace LernProject
 
             if (collision.gameObject.TryGetComponent(out ITakeDamage takeDamage)) // нахождение конкретного компонента и взаимодейстиве с ним
             {
+
+                var particle = Instantiate(_sparcsPrefab);
+
+                particle.transform.position = collision.contacts[0].point;
+                particle.transform.rotation = Quaternion.Euler(collision.contacts[0].normal);
+                var lifetime = particle.main.duration + particle.main.startLifetimeMultiplier;
+                Destroy(particle.gameObject, lifetime);
+
                 Debug.Log("Hit!");
 
                 EnemyHealth stats;

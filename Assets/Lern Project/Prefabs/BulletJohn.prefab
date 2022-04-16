@@ -125,5 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea1ccedfac1cd7f4ea697114d9726275, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sparcsPrefab: {fileID: 3340597137849850400, guid: 2c545be99489a184cb13469744611266,
+    type: 3}
   _damage: 1
   _force: 1000

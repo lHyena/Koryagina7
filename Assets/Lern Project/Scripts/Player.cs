@@ -28,10 +28,15 @@ namespace LernProject
 
         [SerializeField] private Animator _anim;
 
+        private AudioSource _source;
+        [SerializeField] private AudioClip _fire;
+
+
         private void Awake()
         {
             _rb = GetComponent<Rigidbody>();
             _anim = GetComponent<Animator>();
+            _source = GetComponent<AudioSource>();
         }
                       
 
@@ -44,6 +49,8 @@ namespace LernProject
             if (Input.GetMouseButtonDown(0))
             {
                 Fire();
+                
+                _source.Play();
             }
                          
             _anim.SetBool("IsWalking", _direction != Vector3.zero);
